@@ -103,8 +103,8 @@ app.get('/api/v1/route/:id',async(req,res)=>{
     const id = req.params.id
     console.log(id);
         try{
-         await TASKS.findById(id)
-         res.status(200).render('sinlepage', {title: 'single || pae',task:result})
+         const result = await TASKS.findById(id)
+         res.status(200).render('singlePage', {title: 'single || page',task:result})
 
         }catch(error){
             console.log(error);
