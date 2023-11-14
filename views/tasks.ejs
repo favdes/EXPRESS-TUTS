@@ -4,12 +4,12 @@
 <body>
     <%- include('../partials/nav.ejs') %>
     
-    <main>
-        <form action="">
-            <label for="">Name:</label><br>
-            <input type="text" id="name"><br>
+    <main class="container">
+        <form action="/api/v1/create" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
             <label for="title">Title:</label><br>
-            <input type="text" id="title"><br>
+            <input type="text" id="title" name="title"><br>
             <label for="task">Task:</label><br>
             <textarea name="text" id="" cols="30" rows="10"></textarea><br><br>
             <button>Submit</button>
