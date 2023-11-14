@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-const PORT = 5050;
+const port = process.env.PORT || 5050;
 // const mongoose = require('mongoose');
 require('dotenv/config')
 const connect = require ('./db/mongoDB.js')
