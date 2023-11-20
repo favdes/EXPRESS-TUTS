@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+ <html lang="en">
     <%- include('../partials/header.ejs') %>
 <body>
     <%- include('../partials/nav.ejs') %>
@@ -9,8 +9,10 @@
     <h2><%- task.title %></h2>
     <p><%- task.task %></p>
     <div>
-        <button>Delete task</button>
-        <button>Edit task</button>
+        <button>
+            <a href="/api/v1/delete/<%= task._id %>">Delete task</a></button>
+        <button>
+            <a href="/api/v1/editPage/<%= task._id %>">Edit task</a></button>
     </div>
 </div>
 

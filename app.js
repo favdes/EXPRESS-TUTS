@@ -6,6 +6,8 @@ const port = process.env.PORT || 5050;
 require('dotenv/config')
 const connect = require ('./db/mongoDB.js')
 const TASKS = require('./model/taskModel.js')
+const taskRouter = require('./router/taskRouter.js')
+require("dotenv/config");
 
 
 
@@ -82,39 +84,12 @@ app.use(express.static('public'))
 // ]
 
 // api
-app.post('/api/v1/create',async(req,res)=>{
-    const newTask = new TASKS(req.body)
-    console.log(req.body);
 
-    // ss.save()
-    // .then((result)=>{
-    // res.redirect('/')
-    // })
-    try{
-        await newTask.save();
-        res.status(201).redirect('/')
-    }catch(error){
-        console.log(error);
-    }
-});
-// route params
-
-app.get('/api/v1/route/:id',async(req,res)=>{
-    const id = req.params.id
-    console.log(id);
-        try{
-         const result = await TASKS.findById(id)
-         res.status(200).render('singlePage', {title: 'single || page',task:result})
-
-        }catch(error){
-            console.log(error);
-        }
-        
-});
+app.use('/api/v1', taskRouter)
 
 
-// page routes
-app.get('/', async(req,res)=>{
+   // page routes
+    app.get('/', async(req,res)=>{
 
     // TASKS.find()
     // .then((result))
@@ -134,6 +109,11 @@ app.get('/about', (req,res)=>{
 })
 app.get('/tasks', (req,res)=>{
     res.render('tasks', {title:'New Tasks'})
+
+})
+
+app.get('/edit', (req, res) =>{
+        res.render('editPage', {title:'edit || page'})
 
 })
 app.get('/singlepage', (req,res)=>{
